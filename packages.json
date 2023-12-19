@@ -2,10 +2,9 @@
     "name": "IAWeb.Reminders",
     "version": "1.0.0",
     "description": "",
+    "main": "index.html",
     "scripts": {
-        "build": "echo \"No build specified\" && exit 1",
-        "test": "echo \"No test specified\" && exit 1",
-        "start": "node index.js"
+        "start": "node index.html"
     },
     "repository": {
         "type": "git",
@@ -16,5 +15,8 @@
     "bugs": {
         "url": "https://github.com/serlooks/IAWeb.Reminders/issues"
     },
-    "homepage": "https://github.com/serlooks/IAWeb.Reminders#readme"
+    "homepage": "https://github.com/serlooks/IAWeb.Reminders#readme",
+      "dependencies": {
+    "express": "^4.18.2"
+  }
 }
