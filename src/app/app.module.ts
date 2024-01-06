@@ -18,6 +18,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OverviewComponent } from './components/overview/overview.component';
+import {MatIconModule} from '@angular/material/icon';
+import { AddReminderComponent } from './components/add-reminder/add-reminder.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import { ConfigureReminderComponent } from './components/configure-reminder/configure-reminder.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,9 @@ import { OverviewComponent } from './components/overview/overview.component';
     UserPageComponent,
     NavbarComponent,
     FooterComponent,
-    OverviewComponent
+    OverviewComponent,
+    AddReminderComponent,
+    ConfigureReminderComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +50,13 @@ import { OverviewComponent } from './components/overview/overview.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatCheckboxModule
-  ],
+    MatCheckboxModule,
+    MatIconModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatDividerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

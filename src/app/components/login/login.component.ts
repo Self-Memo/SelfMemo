@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // Intentionally blank
+    this.username= 'user';
+    this.onLoginClick();
   }
 
   onLoginClick() {
