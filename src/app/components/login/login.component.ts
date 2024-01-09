@@ -23,9 +23,11 @@ export class LoginComponent implements OnInit {
   onLoginClick() {
     switch (this.username) {
       case "admin":
+        sessionStorage.setItem('token', ':)')
         this.router.navigate(['/admin-page']);
         break;
       case "user":
+        sessionStorage.setItem('token', ':)')
         this.router.navigate(['/user-page']);
         break;
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateFormat } from 'src/app/models/DateFormatEnum';
 import { EmailType } from 'src/app/models/EmailTypeEnum';
 import { ListEntry } from 'src/app/models/ListEntry';
 
@@ -26,6 +27,9 @@ export class OverviewComponent implements OnInit {
     { active: true, subject: 'Customer Service Metrics', type: EmailType.DAILY, createdDateTime: new Date(2023, 2, 0o2, 17, 28, 42, 11) },
     { active: true, subject: 'Quality Assurance Review', type: EmailType.ONE_TIME, createdDateTime: new Date(2023, 5, 0o5, 17, 48, 42, 11) }];
   displayedColumns: string[] = ['Active', 'Subject', 'Type', 'Next Event'];
+
+  public selectedDateFormat = DateFormat.UTC;
+  public DateFormat = DateFormat;
 
   constructor(){}
   

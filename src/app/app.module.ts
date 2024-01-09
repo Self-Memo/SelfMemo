@@ -9,22 +9,25 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { OverviewComponent } from './components/overview/overview.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { AddReminderComponent } from './components/add-reminder/add-reminder.component';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatSelectModule} from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
 import { ConfigureReminderComponent } from './components/configure-reminder/configure-reminder.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { EventScheduleComponent } from './components/event-schedule/event-schedule.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import {MatDividerModule} from '@angular/material/divider';
     FooterComponent,
     OverviewComponent,
     AddReminderComponent,
-    ConfigureReminderComponent
+    ConfigureReminderComponent,
+    EventScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +59,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatStepperModule,
     MatSelectModule,
     MatGridListModule,
-    MatDividerModule
-    ],
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
