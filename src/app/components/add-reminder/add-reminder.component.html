@@ -7,11 +7,11 @@
                     <mat-label>Choose your type</mat-label>
                     <select matNativeControl formControlName="firstCtrl" required>
                         <option value="" selected></option>
-                        <option value="EmailType.ONE_TIME"> {{ EmailType[EmailType.ONE_TIME] }}</option>
-                        <option value="EmailType.DAILY"> {{ EmailType[EmailType.DAILY] }}</option>
-                        <option value="EmailType.WEEKLY"> {{ EmailType[EmailType.WEEKLY] }}</option>
-                        <option value="EmailType.MONTHLY"> {{ EmailType[EmailType.MONTHLY] }}</option>
-                        <option value="EmailType.YEARLY"> {{ EmailType[EmailType.YEARLY] }}</option>
+                        <option value="EmailType.ONE_TIME">{{ EmailType[EmailType.ONE_TIME] | firstLetterUppercase }}</option>
+                        <option value="EmailType.DAILY">{{ EmailType[EmailType.DAILY] | firstLetterUppercase }}</option>
+                        <option value="EmailType.WEEKLY">{{ EmailType[EmailType.WEEKLY] | firstLetterUppercase }}</option>
+                        <option value="EmailType.MONTHLY">{{ EmailType[EmailType.MONTHLY] | firstLetterUppercase }}</option>
+                        <option value="EmailType.YEARLY">{{ EmailType[EmailType.YEARLY] | firstLetterUppercase }}</option>
                     </select>
                 </mat-form-field>
                 <div>

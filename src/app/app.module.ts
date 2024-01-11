@@ -28,6 +28,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { EventScheduleComponent } from './components/event-schedule/event-schedule.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     OverviewComponent,
     AddReminderComponent,
     ConfigureReminderComponent,
-    EventScheduleComponent
+    EventScheduleComponent,
+    FirstLetterUppercasePipe
   ],
   imports: [
     BrowserModule,

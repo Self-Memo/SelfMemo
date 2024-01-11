@@ -6,6 +6,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { EmailType } from 'src/app/models/EmailTypeEnum';
 import { WeekDay } from '@angular/common';
 import { Week } from 'src/app/models/Week';
+import { YearEnum } from 'src/app/models/YearEnum';
 
 @Component({
   selector: 'app-event-schedule',
@@ -14,12 +15,25 @@ import { Week } from 'src/app/models/Week';
 })
 export class EventScheduleComponent implements OnInit {
 
-  emailType: EmailType = EmailType.DAILY;
+  emailType: EmailType = EmailType.YEARLY;
   EmailType = EmailType;
+  Year = YearEnum;
   week: Week = new Week();
+  selectedDayOfMonth:number = 1;
+  daysOfMonth: number[] = [];
+  selectedMonth :number = YearEnum.JANUARY;
 
   constructor(){}
 
   ngOnInit(): void {
+    this.daysOfMonth = this.range(31);
+  }
+
+  range(max: number): number[]{
+    let result : number[] = [];
+    for (let i = 1; i <= max; i++){
+      result.push(i);
+    }
+    return result;
   }
 }
