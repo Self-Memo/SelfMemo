@@ -29,6 +29,9 @@ import { EventScheduleComponent } from './components/event-schedule/event-schedu
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
+import { UtilitiesComponent } from './components/utilities/utilities.component';
+import { ReminderOverviewComponent } from './components/reminder-overview/reminder-overview.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
     AddReminderComponent,
     ConfigureReminderComponent,
     EventScheduleComponent,
-    FirstLetterUppercasePipe
+    FirstLetterUppercasePipe,
+    UtilitiesComponent,
+    ReminderOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
     MatGridListModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

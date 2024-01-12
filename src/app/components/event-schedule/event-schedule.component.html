@@ -1,17 +1,33 @@
-<div [ngSwitch]="emailType">
-    <div *ngSwitchCase="EmailType.ONE_TIME" style="display: flex;">
-        <p>This event occurs on</p>
-        <mat-form-field>
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+<div [ngSwitch]="reminder.type">
+    <div *ngSwitchCase="EmailType.ONE_TIME">
+        <div style="display: flex;">
+            <p>This event occurs on</p>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" (dateChange)="onNextDateChange($event)" >
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex;">
+            <p>at</p><mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="hourOfDay" required>
+                    <mat-option *ngFor="let i of hoursOfDay" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>:</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="minuteOfHour" required>
+                    <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
     <div *ngSwitchCase="EmailType.DAILY">
-        <p>This event occurs on</p>
+
         <div style="display: flex;">
-            <p>On these days:</p>
+            <p>This event occurs on these days:</p>
             <mat-checkbox [(ngModel)]="week.monday">Monday</mat-checkbox>
             <mat-checkbox [(ngModel)]="week.tuesday">Tuesday</mat-checkbox>
             <mat-checkbox [(ngModel)]="week.wednesday">Wednesday</mat-checkbox>
@@ -20,63 +36,125 @@
             <mat-checkbox [(ngModel)]="week.saturday">Saturday</mat-checkbox>
             <mat-checkbox [(ngModel)]="week.sunday">Sunday</mat-checkbox>
         </div>
+
+        <div style="display: flex;">
+            <p>at</p><mat-form-field>
+
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="hourOfDay" required>
+                    <mat-option *ngFor="let i of hoursOfDay" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>:</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="minuteOfHour" required>
+                    <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
-    <div *ngSwitchCase="EmailType.WEEKLY" style="display: flex;">
-        <p>This event occurs every</p>
-        <mat-form-field>
-            <select matNativeControl required>
-                <option [(ngModel)]="week.monday">Monday</option>
-                <option [(ngModel)]="week.tuesday">Tuesday</option>
-                <option [(ngModel)]="week.wednesday">Wednesday</option>
-                <option [(ngModel)]="week.thursday">Thursday</option>
-                <option [(ngModel)]="week.friday">Friday</option>
-                <option [(ngModel)]="week.saturday">Saturday</option>
-                <option [(ngModel)]="week.sunday">Sunday</option>
-            </select>
-        </mat-form-field>
+    <div *ngSwitchCase="EmailType.WEEKLY">
+
+        <div style="display: flex;">
+            <p>This event occurs every</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)"  (selectionChange)="onWeeklyChange($event)" required>
+                    <mat-option [value]="0">Monday</mat-option>
+                    <mat-option [value]="1">Tuesday</mat-option>
+                    <mat-option [value]="2">Wednesday</mat-option>
+                    <mat-option [value]="3">Thursday</mat-option>
+                    <mat-option [value]="4">Friday</mat-option>
+                    <mat-option [value]="5">Saturday</mat-option>
+                    <mat-option [value]="6">Sunday</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex;">
+            <p>at</p><mat-form-field>
+
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="hourOfDay" required>
+                    <mat-option *ngFor="let i of hoursOfDay" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>:</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="minuteOfHour" required>
+                    <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
-    <div *ngSwitchCase="EmailType.MONTHLY" style="display: flex;">
-        <p>This event occurs at</p>
-        <p> </p>
-        <p>on the </p>
-        <mat-form-field>
-            <select matNativeControl [(ngModel)]="selectedDayOfMonth" required>
-                <option *ngFor="let i of daysOfMonth">{{i}}</option>
-            </select>
-        </mat-form-field>
-        <p>day of every month</p>
+    <div *ngSwitchCase="EmailType.MONTHLY">
+
+        <div style="display: flex;">
+            <p>This event occurs on the</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.dayOfMonth" required>
+                    <mat-option *ngFor="let i of daysOfMonth" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>day of every month</p>
+        </div>
+        <div style="display: flex;">
+            <p>at</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="hourOfDay" required>
+                    <mat-option *ngFor="let i of hoursOfDay" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>:</p>
+            <mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="minuteOfHour" required>
+                    <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
 
-    <div *ngSwitchCase="EmailType.YEARLY" style="display: flex;">
-        <p>This event occurs every</p>
-        <mat-form-field>
-            <select matNativeControl [(ngModel)]="selectedMonth" required>
-                <option value="Year.JANUARY"> {{ Year[Year.JANUARY] | firstLetterUppercase }}</option>
-                <option value="Year.FEBRUARY"> {{ Year[Year.FEBRUARY] | firstLetterUppercase }}</option>
-                <option value="Year.MARCH"> {{ Year[Year.MARCH] | firstLetterUppercase }}</option>
-                <option value="Year.APRIL"> {{ Year[Year.APRIL] | firstLetterUppercase }}</option>
-                <option value="Year.MAY"> {{ Year[Year.MAY] | firstLetterUppercase }}</option>
-                <option value="Year.JUNE"> {{ Year[Year.JUNE] | firstLetterUppercase }}</option>
-                <option value="Year.JULY"> {{ Year[Year.JULY] | firstLetterUppercase }}</option>
-                <option value="Year.AUGUST"> {{ Year[Year.AUGUST] | firstLetterUppercase }}</option>
-                <option value="Year.SEPTEMBER"> {{ Year[Year.SEPTEMBER] | firstLetterUppercase }}</option>
-                <option value="Year.OCTOBER"> {{ Year[Year.OCTOBER] | firstLetterUppercase }}</option>
-                <option value="Year.NOVEMBER"> {{ Year[Year.NOVEMBER] | firstLetterUppercase }}</option>
-                <option value="Year.DECEMBER"> {{ Year[Year.DECEMBER] | firstLetterUppercase }}</option>
-            </select>
-        </mat-form-field>
-        <p>on the </p>
-        <mat-form-field>
-            <select matNativeControl [(ngModel)]="selectedDayOfMonth" required>
-                <option *ngFor="let i of daysOfMonth">{{i}}</option>
-            </select>
-        </mat-form-field>
-        <p>day of the month </p>
-        <p>at</p>
-        <mat-form-field>
-            <select matNativeControl [(ngModel)]="selectedDayOfMonth" required>
-                <option *ngFor="let i of daysOfMonth">{{i}}</option>
-            </select>
-        </mat-form-field>
+    <div *ngSwitchCase="EmailType.YEARLY">
+
+        <div style="display: flex;">
+            <p>This event occurs every</p>
+            <mat-form-field>
+                <select matNativeControl [(ngModel)]="selectedMonth" required>
+                    <option [value]="Months.JANUARY"> {{ Months[Months.JANUARY] | firstLetterUppercase }}</option>
+                    <option [value]="Months.FEBRUARY"> {{ Months[Months.FEBRUARY] | firstLetterUppercase }}</option>
+                    <option [value]="Months.MARCH"> {{ Months[Months.MARCH] | firstLetterUppercase }}</option>
+                    <option [value]="Months.APRIL"> {{ Months[Months.APRIL] | firstLetterUppercase }}</option>
+                    <option [value]="Months.MAY"> {{ Months[Months.MAY] | firstLetterUppercase }}</option>
+                    <option [value]="Months.JUNE"> {{ Months[Months.JUNE] | firstLetterUppercase }}</option>
+                    <option [value]="Months.JULY"> {{ Months[Months.JULY] | firstLetterUppercase }}</option>
+                    <option [value]="Months.AUGUST"> {{ Months[Months.AUGUST] | firstLetterUppercase }}</option>
+                    <option [value]="Months.SEPTEMBER"> {{ Months[Months.SEPTEMBER] | firstLetterUppercase }}</option>
+                    <option [value]="Months.OCTOBER"> {{ Months[Months.OCTOBER] | firstLetterUppercase }}</option>
+                    <option [value]="Months.NOVEMBER"> {{ Months[Months.NOVEMBER] | firstLetterUppercase }}</option>
+                    <option [value]="Months.DECEMBER"> {{ Months[Months.DECEMBER] | firstLetterUppercase }}</option>
+                </select>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex;">
+            <p>on the </p>
+            <mat-form-field>
+                <select matNativeControl [(ngModel)]="reminder.dayOfMonth" required>
+                    <option *ngFor="let i of daysOfMonth" [value]="i">{{i}}</option>
+                </select>
+            </mat-form-field>
+            <p>day of the month </p>
+        </div>
+
+        <div style="display: flex;">
+            <p>at</p><mat-form-field>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="hourOfDay" required>
+                    <mat-option *ngFor="let i of hoursOfDay" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>:</p>
+            <mat-form-field>
+                <mat-select matNativeControl [(ngModel)]="minuteOfHour" (selectionChange)="onChange($event)" required>
+                    <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-export enum YearEnum {
+export enum MonthEnum {
   JANUARY = 0,
   FEBRUARY = 1,
   MARCH = 2,
