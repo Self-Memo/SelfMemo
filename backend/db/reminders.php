@@ -20,6 +20,27 @@ class Reminders
         return $reminders;
     }
 
+    public static function getExpiredReminders()
+    {
+        global $db;
+
+        // Get the current date and time in the format used in the database
+        $currentDateTime = date('Y-m-d H:i:s');
+
+        // Query for all reminders where the expiration_date is in the past
+        $stmt = $db->prepare("SELECT * FROM reminders WHERE expiration_date < :current_date");
+        $stmt->bindValue(':current_date', $currentDateTime, SQLITE3_TEXT);
+        
+        $result = $stmt->execute();
+
+        $expiredReminders = array();
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $expiredReminders[] = $row;
+        }
+
+        return $expiredReminders;
+    }
+
     public static function getReminderById($id)
     {
         global $db;

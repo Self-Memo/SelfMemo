@@ -23,7 +23,15 @@ class Database
             expiration_date DATETIME NOT NULL,
             FOREIGN KEY (user) REFERENCES users(username)
         )");
-
+        $db->exec("CREATE TABLE IF NOT EXISTS smtp_settings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            host TEXT NOT NULL,
+            port INTEGER NOT NULL,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL,
+            from_email TEXT NOT NULL,
+            from_name TEXT NOT NULL
+        )");
         return $db;
     }
 }
