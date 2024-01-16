@@ -10,4 +10,11 @@ export class AuthService {
   isLoggedIn(){
     return sessionStorage.getItem('token');
   }
+
+  isLoggedInUser(){
+    return sessionStorage.getItem('token') == 'user';
+  }
+  isLoggedInAdmin(){
+    return sessionStorage.getItem('token') == 'admin';
+  }
 }

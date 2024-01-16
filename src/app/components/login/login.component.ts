@@ -16,18 +16,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // Intentionally blank
-    this.username= 'admin';
-    this.onLoginClick();
+    //this.username= 'admin';
+    //this.onLoginClick();
   }
 
   onLoginClick() {
     switch (this.username) {
       case "admin":
-        sessionStorage.setItem('token', ':)')
+        sessionStorage.setItem('token', 'admin')
         this.router.navigate(['/admin-page']);
         break;
       case "user":
-        sessionStorage.setItem('token', ':)')
+        sessionStorage.setItem('token', 'user')
         this.router.navigate(['/user-page']);
         break;
 
