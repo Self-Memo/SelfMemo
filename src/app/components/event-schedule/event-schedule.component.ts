@@ -37,9 +37,9 @@ export class EventScheduleComponent implements OnInit {
   constructor(private reminderService: ReminderService) { }
 
   ngOnInit(): void {
-    this.daysOfMonth = UtilitiesComponent.rangeGenerator(0, 30);
+    this.daysOfMonth = UtilitiesComponent.rangeGenerator(1, 31);
     this.hoursOfDay = UtilitiesComponent.rangeGenerator(0, 23);
-    this.minutesOfHour = UtilitiesComponent.rangeGenerator(1, 60);
+    this.minutesOfHour = UtilitiesComponent.rangeGenerator(0, 59);
 
     this.reminderService.activeReminder.subscribe(update => {
       this.reminder = update;
@@ -73,8 +73,8 @@ export class EventScheduleComponent implements OnInit {
         break;
     }
 
-    this.reminder.week = newWeek;
-
+    this.reminder.daysOfWeekBitMask = UtilitiesComponent.weekToBitMask(newWeek);
+    this.onChange(null);
   }
   
   onChange(event:any){
@@ -90,5 +90,8 @@ export class EventScheduleComponent implements OnInit {
     this.onChange(event);
   }
 
-  
+  onDailyClick(){
+    this.reminder.daysOfWeekBitMask = UtilitiesComponent.weekToBitMask(this.week);
+    this.onChange(null);
+  }
 }

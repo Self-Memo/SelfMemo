@@ -23,8 +23,9 @@
     <ng-container matColumnDef="Next Event">
         <th mat-header-cell *matHeaderCellDef> Next Event
             <select matNativeControl [(ngModel)]="selectedDateFormat" required>
-                <option value="{{DateFormat.UTC}}"> UTC </option>
                 <option value="{{DateFormat.ISO}}"> ISO 8601</option>
+                <option value="{{DateFormat.UNIX}}"> UNIX </option>
+                <option value="{{DateFormat.UTC}}"> UTC </option>
             </select>
         </th>
         <td mat-cell *matCellDef="let element"> {{element.createdDateTime | date : selectedDateFormat}} </td>

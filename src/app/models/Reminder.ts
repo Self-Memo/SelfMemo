@@ -3,11 +3,14 @@ import { MonthEnum } from "./MonthEnum";
 import { Week } from "./Week";
 
 export class Reminder {
+    user?:string;
     type?: EmailType;
-    week?: Week;
-    month?: MonthEnum;
+    daysOfWeekBitMask?: string;
+    month?: number;
     dayOfMonth?: number;
-    nextEvent?: Date;
+    hour?: number;
+    minute?: number;
     additionalNotes?:string;
     subject?:string;
+    nextEvent?: Date;
 }

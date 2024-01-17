@@ -32,6 +32,8 @@ import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
 import { UtilitiesComponent } from './components/utilities/utilities.component';
 import { ReminderOverviewComponent } from './components/reminder-overview/reminder-overview.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

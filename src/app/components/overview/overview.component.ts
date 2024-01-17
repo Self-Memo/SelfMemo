@@ -23,12 +23,12 @@ export class OverviewComponent implements OnInit {
     { active: false, subject: 'Quarterly Review Meeting', type: EmailType.MONTHLY, createdDateTime: new Date(2023, 3, 0o5, 17, 50, 42, 11) },
     { active: true, subject: 'Supply Chain Update', type: EmailType.WEEKLY, createdDateTime: new Date(2023, 6, 0o3, 17, 40, 42, 11) },
     { active: true, subject: 'Monthly Sales Forecast', type: EmailType.MONTHLY, createdDateTime: new Date(2023, 0, 0o1, 17, 0o0, 42, 11) },
-    { active: true, subject: 'Tech Innovation Briefing', type: EmailType.ONE_TIME, createdDateTime: new Date(2023, 12, 0o5, 17, 18, 42, 11) },
+    { active: true, subject: 'Tech Innovation Briefing', type: EmailType.ONCE, createdDateTime: new Date(2023, 12, 0o5, 17, 18, 42, 11) },
     { active: true, subject: 'Customer Service Metrics', type: EmailType.DAILY, createdDateTime: new Date(2023, 2, 0o2, 17, 28, 42, 11) },
-    { active: true, subject: 'Quality Assurance Review', type: EmailType.ONE_TIME, createdDateTime: new Date(2023, 5, 0o5, 17, 48, 42, 11) }];
+    { active: true, subject: 'Quality Assurance Review', type: EmailType.ONCE, createdDateTime: new Date(2023, 5, 0o5, 17, 48, 42, 11) }];
   displayedColumns: string[] = ['Active', 'Subject', 'Type', 'Next Event'];
 
-  public selectedDateFormat = DateFormat.UTC;
+  public selectedDateFormat = DateFormat.ISO;
   public DateFormat = DateFormat;
 
   constructor(){}
