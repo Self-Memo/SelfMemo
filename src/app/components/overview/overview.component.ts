@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatSortable } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { DateFormat } from 'src/app/models/DateFormatEnum';
 import { EmailType } from 'src/app/models/EmailTypeEnum';
 import { ListEntry } from 'src/app/models/ListEntry';
@@ -26,15 +28,22 @@ export class OverviewComponent implements OnInit {
     { active: true, subject: 'Tech Innovation Briefing', type: EmailType.ONCE, createdDateTime: new Date(2023, 12, 0o5, 17, 18, 42, 11) },
     { active: true, subject: 'Customer Service Metrics', type: EmailType.DAILY, createdDateTime: new Date(2023, 2, 0o2, 17, 28, 42, 11) },
     { active: true, subject: 'Quality Assurance Review', type: EmailType.ONCE, createdDateTime: new Date(2023, 5, 0o5, 17, 48, 42, 11) }];
-  displayedColumns: string[] = ['Active', 'Subject', 'Type', 'Next Event'];
-
+  displayedColumns: string[] = ['active', 'subject', 'type', 'createdDateTime'];
+  @ViewChild(MatSort) sort: MatSort | undefined;
   public selectedDateFormat = DateFormat.ISO;
   public DateFormat = DateFormat;
+  public dataSource: MatTableDataSource<ListEntry> = new MatTableDataSource();
 
-  constructor(){}
+  constructor(){
+    this.dataSource = new MatTableDataSource(this.listEntries);
+  }
   
   ngOnInit(): void {
-    // Intentionaly blank
+    
   }
 
+  ngAfterViewInit() {
+    (this.sort ? this.sort.sort(({ id: 'createdDateTime', start: 'asc'}) as MatSortable) : this.sort);
+    this.dataSource.sort = (this.sort ? this.sort : null);
+  }
 }
