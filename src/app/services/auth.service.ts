@@ -12,9 +12,9 @@ export class AuthService {
   }
 
   isLoggedInUser(){
-    return sessionStorage.getItem('token') == 'user';
+    return JSON.parse(String(sessionStorage.getItem('token'))).role == 1;
   }
   isLoggedInAdmin(){
-    return sessionStorage.getItem('token') == 'admin';
+    return JSON.parse(String(sessionStorage.getItem('token'))).role == 0;
   }
 }
