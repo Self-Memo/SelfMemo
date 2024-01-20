@@ -8,9 +8,9 @@ import { Week } from 'src/app/models/Week';
 })
 export class UtilitiesComponent {
 
-  static rangeGenerator(min: number, max: number): number[]{
+  static rangeGenerator(min: number, max: number, steps: number): number[]{
     let result : number[] = [];
-    for (let i = min; i <= max; i++){
+    for (let i = min; i <= max; i = i+steps){
       result.push(i);
     }
     return result;
