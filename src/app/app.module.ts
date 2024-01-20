@@ -33,6 +33,7 @@ import { UtilitiesComponent } from './components/utilities/utilities.component';
 import { ReminderOverviewComponent } from './components/reminder-overview/reminder-overview.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -72,7 +73,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSortModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
