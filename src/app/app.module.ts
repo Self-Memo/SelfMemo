@@ -34,6 +34,7 @@ import { ReminderOverviewComponent } from './components/reminder-overview/remind
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { MatSortModule } from '@angular/material/sort';
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

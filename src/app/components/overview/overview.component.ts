@@ -80,7 +80,6 @@ export class OverviewComponent implements OnInit {
         return;
       })
       .then(val => {
-        console.log(val)
       });
   }
 }
