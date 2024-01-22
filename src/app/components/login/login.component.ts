@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   username = '';
   password = '';
 
-  constructor(private router: Router, private userService: UserService, private snackbarService : SnackbarService) { }
+  constructor(private router: Router, private userService: UserService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     // Intentionally blank
@@ -27,12 +28,18 @@ export class LoginComponent implements OnInit {
   async onLoginClick() {
     let loggedInUser: User = null as any;
     let login = this.userService.login(this.username, this.password);
-    await lastValueFrom(login).then(val => {
-      loggedInUser = val.user;
-    });
+    await lastValueFrom(login)
+      .catch((error: HttpErrorResponse) => {
+        console.log("error: ", error);
+        this.snackbarService.showSnackbar(2, "Login failed!");
+        return;
+      })
+      .then(val => {
+        loggedInUser = val.user;
+      });
 
-    if(!loggedInUser || !loggedInUser.id){
-      this.snackbarService.showSnackbar(2, "An Error occured!");
+    if (!loggedInUser || !loggedInUser.id) {
+      this.snackbarService.showSnackbar(2, "Login failed!");
       return;
     }
 

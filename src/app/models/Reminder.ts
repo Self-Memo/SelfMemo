@@ -3,7 +3,9 @@ import { MonthEnum } from "./MonthEnum";
 import { Week } from "./Week";
 
 export class Reminder {
-    user?:string;
+    id?:string;
+    active?:boolean;
+    user_id?:string;
     type?: EmailType;
     daysOfWeekBitMask?: string;
     month?: number;
