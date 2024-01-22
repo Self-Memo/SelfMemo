@@ -39,12 +39,12 @@ export class ReminderService {
     return this.http.get(`${this.apiUrl}/user/${userId}`, {headers:this.headers});
   }
 
-  createReminder(reminderData: Reminder): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${reminderData.id}`, reminderData, {headers:this.headers});
+  createReminder(reminder: Reminder): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, reminder, {headers:this.headers});
   }
 
   updateReminder(reminder: Reminder): Observable<any> {
-    return this.http.put(this.apiUrl, reminder, {headers:this.headers});
+    return this.http.put(`${this.apiUrl}/${reminder.id}`, reminder, {headers:this.headers});
   }
 
   deleteReminder(id: number): Observable<any> {

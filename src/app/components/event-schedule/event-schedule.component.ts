@@ -26,6 +26,7 @@ export class EventScheduleComponent implements OnInit {
   daysOfMonth: number[] = [];
   hoursOfDay: number[] = [];
   minutesOfHour: number[] = [];
+  todayDate:Date = new Date();
   
   hourOfDay: number = 0;
   minuteOfHour: number = 0;

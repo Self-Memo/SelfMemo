@@ -4,7 +4,7 @@ import { Week } from "./Week";
 
 export class Reminder {
     id?:string;
-    active?:boolean;
+    active?:boolean = true;
     user_id?:string;
     type?: EmailType;
     daysOfWeekBitMask?: string;
