@@ -43,7 +43,7 @@ export class OverviewComponent implements OnInit {
   public user :User = {}
 
   constructor(public reminderService: ReminderService, public snackbarService: SnackbarService){
-    this.dataSource = new MatTableDataSource(this.listEntries);
+    this.dataSource = new MatTableDataSource();
   }
   
   async ngOnInit(): Promise<void> {
@@ -56,7 +56,7 @@ export class OverviewComponent implements OnInit {
         return;
       })
       .then(val => {
-        this.dataSource = val.reminder;
+        this.dataSource = new MatTableDataSource(val.reminder);
         this.setSort();
       });
 

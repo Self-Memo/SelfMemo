@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { SMPT } from '../models/SMTP';
+import config from '../../../config.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SmtpService {
 
-  private apiUrl = 'http://localhost:8000/api/smtpsettings';
+  private apiUrl = config.serverURL+'/api/smtpsettings';
   headers = new HttpHeaders();
 
   constructor(private http: HttpClient) {

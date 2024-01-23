@@ -3,6 +3,7 @@ import { Reminder } from '../models/Reminder';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import config from '../../../config.json';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ReminderService {
 
   activeReminder = new BehaviorSubject<Reminder>(null as any);
-  private apiUrl = 'http://localhost:8000/api/reminders';  
+  private apiUrl = config.serverURL+'/api/reminders';  
   private headers = new HttpHeaders();
 
   constructor(private http: HttpClient) {
