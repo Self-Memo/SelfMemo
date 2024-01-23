@@ -35,6 +35,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
+import { UserOverviewComponent } from './components/user-overview/user-overview.component';
+import { UserCreationComponent } from './components/user-creation/user-creation.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -52,6 +56,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     FirstLetterUppercasePipe,
     UtilitiesComponent,
     ReminderOverviewComponent,
+    UserOverviewComponent,
+    UserCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

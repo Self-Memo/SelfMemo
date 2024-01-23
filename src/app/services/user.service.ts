@@ -21,6 +21,14 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
+  updateUser(userData: User): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, userData);
+  }
+
+  deleteUser(userData: User): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, userData);
+  }
+
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
     return this.http.post(`${this.apiUrl}/login`, loginData, {headers: this.headers});

@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { SMPT } from 'src/app/models/SMTP';
@@ -10,43 +9,39 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.scss']
+  selector: 'app-user-overview',
+  templateUrl: './user-overview.component.html',
+  styleUrls: ['./user-overview.component.scss']
 })
-export class AdminPageComponent implements OnInit {
+export class UserOverviewComponent implements OnInit {
 
-  smptSettings: SMPT = new SMPT();
-
+  users: User[] = [];
+  
   constructor(private router: Router, private snackbarService: SnackbarService, private userService: UserService, private smtpService: SmtpService){}
 
   async ngOnInit(): Promise<void> {
-    let smtpSettingRequest = this.smtpService.getSmtpSettings();
-    await lastValueFrom(smtpSettingRequest)
+    let usersRequest = this.userService.getAll();
+    await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {
         console.log("error: ", error);
-        this.snackbarService.showSnackbar(2, "Loading of SMTP settings failed!");
+        this.snackbarService.showSnackbar(2, "Loading of users failed!");
         return;
       })
       .then(val => {
-        delete val.smtpSettings['id'];
-        this.smptSettings = (val.smtpSettings ? (val.smtpSettings) : new SMPT());
+        this.users = (val.users ? (val.users) : []);
       });
   }
 
-  async updateSMTPClick() {
-    let smtpSettingRequest = this.smtpService.setSmtpSettings(this.smptSettings);
-    await lastValueFrom(smtpSettingRequest)
+  async onUpdateUserClick(user: User){
+    let usersRequest = this.userService.updateUser(user);
+    await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {
         console.log("error: ", error);
-        this.snackbarService.showSnackbar(2, "Updating SMTP settings failed!");
+        this.snackbarService.showSnackbar(2, "Loading of users failed!");
         return;
       })
       .then(val => {
-        delete val.smtpSettings['id'];
-        this.smptSettings = (val.smtpSettings ? val.smtpSettings : new SMPT());
+        this.users = (val.users ? (val.users) : []);
       });
   }
-
-
 }

@@ -1,5 +1,4 @@
 export class SMPT {
-  id?:number;
   host?:string;
   port?:number; 
   username?:string; 
