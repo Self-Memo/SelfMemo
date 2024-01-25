@@ -18,15 +18,15 @@ export class UserService {
   }
 
   createUser(userData: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
+    return this.http.post(`${this.apiUrl}/register`, userData, {headers: this.headers});
   }
 
   updateUser(userData: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
+    return this.http.put(`${this.apiUrl}/${userData.id}`, userData, {headers: this.headers});
   }
 
   deleteUser(userData: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
+    return this.http.delete(`${this.apiUrl}/${userData.id}`, {headers: this.headers});
   }
 
   login(username: string, password: string): Observable<any> {

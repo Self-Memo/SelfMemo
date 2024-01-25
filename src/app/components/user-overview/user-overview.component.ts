@@ -20,6 +20,10 @@ export class UserOverviewComponent implements OnInit {
   constructor(private router: Router, private snackbarService: SnackbarService, private userService: UserService, private smtpService: SmtpService){}
 
   async ngOnInit(): Promise<void> {
+    this.updateUserList();
+  }
+
+  async updateUserList(){
     let usersRequest = this.userService.getAll();
     await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {
@@ -41,7 +45,20 @@ export class UserOverviewComponent implements OnInit {
         return;
       })
       .then(val => {
-        this.users = (val.users ? (val.users) : []);
+        this.updateUserList();
+      });
+  }
+
+  async onDeleteUserClick(user: User){
+    let usersRequest = this.userService.deleteUser(user);
+    await lastValueFrom(usersRequest)
+      .catch((error: HttpErrorResponse) => {
+        console.log("error: ", error);
+        this.snackbarService.showSnackbar(2, "Delition of users failed!");
+        return;
+      })
+      .then(val => {
+        this.updateUserList();
       });
   }
 }

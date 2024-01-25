@@ -10,6 +10,7 @@ import { ListEntry } from 'src/app/models/ListEntry';
 import { Reminder } from 'src/app/models/Reminder';
 import { User } from 'src/app/models/User';
 import { ReminderService } from 'src/app/services/reminder.service';
+import { SettingService } from 'src/app/services/setting.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
@@ -36,17 +37,18 @@ export class OverviewComponent implements OnInit {
     { active: true, subject: 'Customer Service Metrics', type: EmailType.DAILY, nextEvent: new Date(2023, 2, 0o2, 17, 28, 42, 11) },
     { active: true, subject: 'Quality Assurance Review', type: EmailType.ONCE, nextEvent: new Date(2023, 5, 0o5, 17, 48, 42, 11) }];
   displayedColumns: string[] = ['active', 'subject', 'type', 'nextEvent'];
+  
+  public selectedDateFormat : DateFormat = this.settingService.selectedDateFormat.value;
   @ViewChild(MatSort) sort: MatSort | undefined;
-  public selectedDateFormat = DateFormat.ISO;
-  public DateFormat = DateFormat;
   public dataSource: MatTableDataSource<Reminder> = new MatTableDataSource();
   public user :User = {}
 
-  constructor(public reminderService: ReminderService, public snackbarService: SnackbarService){
+  constructor(public reminderService: ReminderService, public snackbarService: SnackbarService, public settingService: SettingService){
     this.dataSource = new MatTableDataSource();
   }
   
   async ngOnInit(): Promise<void> {
+
     this.user = JSON.parse(String(sessionStorage.getItem('token')));
     let userReminders = this.reminderService.getRemindersByUserId(String(this.user.id));
     await lastValueFrom(userReminders)
@@ -56,9 +58,13 @@ export class OverviewComponent implements OnInit {
         return;
       })
       .then(val => {
-        this.dataSource = new MatTableDataSource(val.reminder);
+        this.dataSource = new MatTableDataSource(this.listEntries);
         this.setSort();
       });
+
+    this.settingService.selectedDateFormat.subscribe( val => {
+      this.selectedDateFormat = val;
+    })
 
   }
 

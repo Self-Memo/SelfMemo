@@ -1,5 +1,21 @@
 <mat-toolbar class="header">
-    <span class="spacer"></span>
     <span routerLink="/" class="gotham">Reminders</span>
     <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isUserLoggedIn()" style="margin-right: 1.5rem;">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-icon (click)="onLogoutClick()">logout</mat-icon>
 </mat-toolbar>
+
+<!-- Menu -->
+
+<mat-menu #menu="matMenu">
+    <div mat-menu-item (click)="$event.stopPropagation();">
+        <mat-icon>calendar_month</mat-icon>
+        <select matNativeControl [(ngModel)]="selectedDateFormat" (click)="onSelectDateFormat()" required>
+            <option value="{{DateFormat.ISO}}"> ISO 8601</option>
+            <option value="{{DateFormat.UNIX}}"> UNIX </option>
+            <option value="{{DateFormat.UTC}}"> UTC </option>
+        </select>
+    </div>
+</mat-menu>

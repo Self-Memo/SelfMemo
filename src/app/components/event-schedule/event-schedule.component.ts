@@ -38,6 +38,9 @@ export class EventScheduleComponent implements OnInit {
   constructor(private reminderService: ReminderService) { }
 
   ngOnInit(): void {
+
+    
+
     this.daysOfMonth = UtilitiesComponent.rangeGenerator(1, 31,1);
     this.hoursOfDay = UtilitiesComponent.rangeGenerator(0, 23,1);
     this.minutesOfHour = UtilitiesComponent.rangeGenerator(0, 59,5);

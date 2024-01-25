@@ -18,34 +18,10 @@ export class AdminPageComponent implements OnInit {
 
   smptSettings: SMPT = new SMPT();
 
-  constructor(private router: Router, private snackbarService: SnackbarService, private userService: UserService, private smtpService: SmtpService){}
+  constructor(){}
 
   async ngOnInit(): Promise<void> {
-    let smtpSettingRequest = this.smtpService.getSmtpSettings();
-    await lastValueFrom(smtpSettingRequest)
-      .catch((error: HttpErrorResponse) => {
-        console.log("error: ", error);
-        this.snackbarService.showSnackbar(2, "Loading of SMTP settings failed!");
-        return;
-      })
-      .then(val => {
-        delete val.smtpSettings['id'];
-        this.smptSettings = (val.smtpSettings ? (val.smtpSettings) : new SMPT());
-      });
-  }
-
-  async updateSMTPClick() {
-    let smtpSettingRequest = this.smtpService.setSmtpSettings(this.smptSettings);
-    await lastValueFrom(smtpSettingRequest)
-      .catch((error: HttpErrorResponse) => {
-        console.log("error: ", error);
-        this.snackbarService.showSnackbar(2, "Updating SMTP settings failed!");
-        return;
-      })
-      .then(val => {
-        delete val.smtpSettings['id'];
-        this.smptSettings = (val.smtpSettings ? val.smtpSettings : new SMPT());
-      });
+   
   }
 
 

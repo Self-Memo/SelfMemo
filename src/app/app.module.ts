@@ -38,6 +38,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { UserOverviewComponent } from './components/user-overview/user-overview.component';
 import { UserCreationComponent } from './components/user-creation/user-creation.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { SmtpOverviewComponent } from './components/smtp-overview/smtp-overview.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -58,6 +60,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ReminderOverviewComponent,
     UserOverviewComponent,
     UserCreationComponent,
+    SmtpOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTableModule,
     MatSortModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -49,6 +49,7 @@ export class AddReminderComponent implements OnInit{
         return;
       })
       .then(val => {
+        this.snackbarService.showSnackbar(2, "Reminder created!");
       });
   }
 }

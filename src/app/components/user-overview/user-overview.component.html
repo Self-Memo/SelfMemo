@@ -8,6 +8,7 @@
                 {{user.email}}
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <div style="display: grid;"> 
             <mat-form-field appearance="fill">
                 <mat-label>Username</mat-label>
                 <input matInput placeholder="Username" [(ngModel)]="user.username">
@@ -20,5 +21,7 @@
                 <input matInput type="password" placeholder="Password" [(ngModel)]="user.password">
             </mat-form-field>
             <button mat-raised-button (click)="onUpdateUserClick(user)">Update User</button>
+            <button mat-raised-button (click)="onDeleteUserClick(user)">Delete User</button>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>
