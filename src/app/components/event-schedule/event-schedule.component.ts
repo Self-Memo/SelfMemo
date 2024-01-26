@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,6 +11,8 @@ import { ReminderService } from 'src/app/services/reminder.service';
 import { Reminder } from 'src/app/models/Reminder';
 import { UtilitiesComponent } from '../utilities/utilities.component';
 import { NotExpr } from '@angular/compiler';
+import { SettingService } from 'src/app/services/setting.service';
+import { DateFormat } from 'src/app/models/DateFormatEnum';
 
 @Component({
   selector: 'app-event-schedule',
@@ -18,6 +20,8 @@ import { NotExpr } from '@angular/compiler';
   styleUrls: ['./event-schedule.component.scss']
 })
 export class EventScheduleComponent implements OnInit {
+
+  public selectedDateFormat : string = this.settingService.selectedDateFormat.value;
 
   emailType: EmailType | undefined = EmailType.YEARLY;
   EmailType = EmailType;
@@ -35,11 +39,14 @@ export class EventScheduleComponent implements OnInit {
 
   reminder: Reminder = null as any;
 
-  constructor(private reminderService: ReminderService) { }
+  constructor(private reminderService: ReminderService, public settingService: SettingService) { }
 
   ngOnInit(): void {
 
-    
+    this.settingService.selectedDateFormat.subscribe( val => {
+      const format = (val as string).replaceAll("m", "").replaceAll("h", "").replaceAll(":", "");
+      this.selectedDateFormat = format;
+    });
 
     this.daysOfMonth = UtilitiesComponent.rangeGenerator(1, 31,1);
     this.hoursOfDay = UtilitiesComponent.rangeGenerator(0, 23,1);

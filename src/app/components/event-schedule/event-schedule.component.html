@@ -4,7 +4,8 @@
             <p>This event occurs on</p>
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [min]="todayDate" (dateChange)="onNextDateChange($event)" >
+                <input matInput value="Test" [ngModel]="reminder.nextEvent | date : selectedDateFormat">
+                <input matInput style="display: none;" [matDatepicker]="picker" [min]="todayDate" (dateChange)="onNextDateChange($event)" value="Test">
                 <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
                 <mat-datepicker #picker ></mat-datepicker>
             </mat-form-field>
