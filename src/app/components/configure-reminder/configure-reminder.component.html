@@ -1,0 +1,33 @@
+<div style="height: 90cqh; width: 100cqw;overflow:auto ">
+    <div style="display: inline-flex;">
+        <div style=" background-color: #009e9e; width: 10cqw">Subject</div>
+        <div style="display: grid;">
+            Please enter a description for this event:
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="(E.g., Luke's Birthday, Dentist Appointment)" (change)="onChange($event)"
+                    value="" [(ngModel)]="reminder.subject" required>
+            </mat-form-field>
+        </div>
+
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: inline-flex;">
+        <div style=" background-color: #009e9e; width: 10cqw">Event Schedule</div>
+        <div style="display: grid;">
+            <app-event-schedule></app-event-schedule>
+        </div>
+
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: inline-flex;">
+        <div style=" background-color: #009e9e;; width: 10cqw">Additional Notes</div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Additional Notes</mat-label>
+                <input matInput placeholder="Team Meeting" value="" (change)="onChange($event)"
+                    [(ngModel)]="reminder.additionalNotes" required>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
