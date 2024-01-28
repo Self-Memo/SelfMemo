@@ -1,5 +1,5 @@
 {
-  "name": "reminders-webapp",
+  "name": "self-memo-webapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

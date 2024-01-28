@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'RemindersWebapp'`, () => {
+  it(`should have as title 'Self Memo'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('RemindersWebapp');
+    expect(app.title).toEqual('Self Memo');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('RemindersWebapp app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Self Memo app is running!');
   });
 });
