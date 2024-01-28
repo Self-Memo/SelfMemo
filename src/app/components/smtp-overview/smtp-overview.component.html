@@ -1,32 +1,34 @@
 <mat-card>
-    <mat-card-title>SMTP Settings</mat-card-title>
-    <mat-card-content style="display: contents;">
-      <mat-form-field>
-        <mat-label>Host</mat-label>
-        <input matInput type="text" placeholder="Host" [(ngModel)]="smptSettings.host">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Port</mat-label>
-        <input matInput type="text" placeholder="Port" [(ngModel)]="smptSettings.port">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput type="text" placeholder="Username" [(ngModel)]="smptSettings.username">
-      </mat-form-field>
-      <mat-checkbox [(ngModel)]="smptSettings.secure">Secure</mat-checkbox>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="smptSettings.password">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>From email</mat-label>
-        <input matInput type="text" placeholder="From email" [(ngModel)]="smptSettings.from_email">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>From name</mat-label>
-        <input matInput type="text" placeholder="From name" [(ngModel)]="smptSettings.from_name">
-      </mat-form-field>
-      <button mat-raised-button *ngIf="(smptSettings.host ? false : true)" (click)="updateSMTPClick()">Set settings</button>
-      <button mat-raised-button *ngIf="(smptSettings.host ? true : false)" (click)="updateSMTPClick()">Update settings</button>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-title>SMTP Settings</mat-card-title>
+  <mat-card-content style="display: contents;">
+    <mat-form-field>
+      <mat-label>Host</mat-label>
+      <input matInput type="text" placeholder="Host" [(ngModel)]="smptSettings.host">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Port</mat-label>
+      <input matInput type="text" placeholder="Port" [(ngModel)]="smptSettings.port">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" placeholder="Username" [(ngModel)]="smptSettings.username">
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="smptSettings.secure">Secure</mat-checkbox>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Password" [(ngModel)]="smptSettings.password">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>From email</mat-label>
+      <input matInput type="text" placeholder="From email" [(ngModel)]="smptSettings.from_email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>From name</mat-label>
+      <input matInput type="text" placeholder="From name" [(ngModel)]="smptSettings.from_name">
+    </mat-form-field>
+    <button mat-raised-button *ngIf="(smptSettings.host ? false : true)" (click)="updateSMTPClick()">Set
+      settings</button>
+    <button mat-raised-button *ngIf="(smptSettings.host ? true : false)" (click)="updateSMTPClick()">Update
+      settings</button>
+  </mat-card-content>
+</mat-card>

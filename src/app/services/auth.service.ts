@@ -7,21 +7,21 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private router: Router) {
-   }
+  }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return sessionStorage.getItem('token');
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('token');
     this.router.navigate(['/']);
   }
 
-  isLoggedInUser(){
-    return  (JSON.parse(String(sessionStorage.getItem('token'))) ? JSON.parse(String(sessionStorage.getItem('token'))).role == 1 : false);
+  isLoggedInUser() {
+    return (JSON.parse(String(sessionStorage.getItem('token'))) ? JSON.parse(String(sessionStorage.getItem('token'))).role == 1 : false);
   }
-  isLoggedInAdmin(){
+  isLoggedInAdmin() {
     return (JSON.parse(String(sessionStorage.getItem('token'))) ? JSON.parse(String(sessionStorage.getItem('token'))).role == 0 : false);
   }
 }

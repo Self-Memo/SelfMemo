@@ -1,11 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { SMPT } from 'src/app/models/SMTP';
 import { SmtpService } from 'src/app/services/smtp.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-smtp-overview',

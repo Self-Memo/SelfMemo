@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -12,18 +11,12 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   username = '';
   password = '';
 
   constructor(private router: Router, private userService: UserService, private snackbarService: SnackbarService) { }
-
-  ngOnInit(): void {
-    // Intentionally blank
-    // this.username= 'admin';
-    // this.onLoginClick();
-  }
 
   async onLoginClick() {
     let loggedInUser: User = null as any;

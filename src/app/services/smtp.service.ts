@@ -1,7 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/User';
 import { SMPT } from '../models/SMTP';
 import config from '../../../config.json';
 
@@ -10,7 +9,7 @@ import config from '../../../config.json';
 })
 export class SmtpService {
 
-  private apiUrl = config.serverURL+'/api/smtpsettings';
+  private apiUrl = config.serverURL + '/api/smtpsettings';
   headers = new HttpHeaders();
 
   constructor(private http: HttpClient) {

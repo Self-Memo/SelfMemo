@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Reminder } from 'src/app/models/Reminder';
 import { ReminderService } from 'src/app/services/reminder.service';
 
@@ -8,8 +7,8 @@ import { ReminderService } from 'src/app/services/reminder.service';
   templateUrl: './configure-reminder.component.html',
   styleUrls: ['./configure-reminder.component.scss']
 })
-export class ConfigureReminderComponent implements OnInit{
-  
+export class ConfigureReminderComponent implements OnInit {
+
   reminder: Reminder = null as any;
 
   constructor(private reminderService: ReminderService) { }
@@ -20,8 +19,8 @@ export class ConfigureReminderComponent implements OnInit{
     });
   }
 
-  onChange(event:any){
+  onChange(event: any) {
     this.reminderService.setActiveReminder(this.reminder);
   }
-  
+
 }

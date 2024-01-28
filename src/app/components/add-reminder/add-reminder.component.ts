@@ -13,19 +13,19 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
   templateUrl: './add-reminder.component.html',
   styleUrls: ['./add-reminder.component.scss']
 })
-export class AddReminderComponent implements OnInit{
+export class AddReminderComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
   isLinear = false;
   isSecondCompleted = true;
-  EmailType = EmailType; 
+  EmailType = EmailType;
 
-  reminder : Reminder = new Reminder();
+  reminder: Reminder = new Reminder();
 
-  constructor(private _formBuilder: FormBuilder, private reminderService:ReminderService, public snackbarService :SnackbarService){
+  constructor(private _formBuilder: FormBuilder, private reminderService: ReminderService, public snackbarService: SnackbarService) {
   }
-  
+
   ngOnInit(): void {
     this.reminderService.setActiveReminder(new Reminder());
     this.reminderService.activeReminder.subscribe(update => {
@@ -34,11 +34,11 @@ export class AddReminderComponent implements OnInit{
 
   }
 
-  onChange(event:any){
+  onChange(event: any) {
     this.reminderService.setActiveReminder(this.reminder);
   }
 
-  async onSave(){
+  async onSave() {
     let user: User = JSON.parse(String(sessionStorage.getItem('token')));
     this.reminder.user_id = String(user.id);
     let userReminders = this.reminderService.createReminder(this.reminder);

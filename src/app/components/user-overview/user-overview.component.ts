@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { SMPT } from 'src/app/models/SMTP';
 import { User } from 'src/app/models/User';
 import { SmtpService } from 'src/app/services/smtp.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -16,14 +15,14 @@ import { UserService } from 'src/app/services/user.service';
 export class UserOverviewComponent implements OnInit {
 
   users: User[] = [];
-  
-  constructor(private router: Router, private snackbarService: SnackbarService, private userService: UserService, private smtpService: SmtpService){}
+
+  constructor(private router: Router, private snackbarService: SnackbarService, private userService: UserService, private smtpService: SmtpService) { }
 
   async ngOnInit(): Promise<void> {
     this.updateUserList();
   }
 
-  async updateUserList(){
+  async updateUserList() {
     let usersRequest = this.userService.getAll();
     await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {
@@ -36,7 +35,7 @@ export class UserOverviewComponent implements OnInit {
       });
   }
 
-  async onUpdateUserClick(user: User){
+  async onUpdateUserClick(user: User) {
     let usersRequest = this.userService.updateUser(user);
     await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {
@@ -49,7 +48,7 @@ export class UserOverviewComponent implements OnInit {
       });
   }
 
-  async onDeleteUserClick(user: User){
+  async onDeleteUserClick(user: User) {
     let usersRequest = this.userService.deleteUser(user);
     await lastValueFrom(usersRequest)
       .catch((error: HttpErrorResponse) => {

@@ -1,18 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
 import { EmailType } from 'src/app/models/EmailTypeEnum';
-import { WeekDay } from '@angular/common';
 import { Week } from 'src/app/models/Week';
 import { MonthEnum } from 'src/app/models/MonthEnum';
 import { ReminderService } from 'src/app/services/reminder.service';
 import { Reminder } from 'src/app/models/Reminder';
 import { UtilitiesComponent } from '../utilities/utilities.component';
-import { NotExpr } from '@angular/compiler';
 import { SettingService } from 'src/app/services/setting.service';
-import { DateFormat } from 'src/app/models/DateFormatEnum';
 
 @Component({
   selector: 'app-event-schedule',
@@ -21,7 +14,7 @@ import { DateFormat } from 'src/app/models/DateFormatEnum';
 })
 export class EventScheduleComponent implements OnInit {
 
-  public selectedDateFormat : string = this.settingService.selectedDateFormat.value;
+  public selectedDateFormat: string = this.settingService.selectedDateFormat.value;
 
   emailType: EmailType | undefined = EmailType.YEARLY;
   EmailType = EmailType;
@@ -30,8 +23,8 @@ export class EventScheduleComponent implements OnInit {
   daysOfMonth: number[] = [];
   hoursOfDay: number[] = [];
   minutesOfHour: number[] = [];
-  todayDate:Date = new Date();
-  
+  todayDate: Date = new Date();
+
   hourOfDay: number = 0;
   minuteOfHour: number = 0;
 
@@ -43,14 +36,14 @@ export class EventScheduleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.settingService.selectedDateFormat.subscribe( val => {
+    this.settingService.selectedDateFormat.subscribe(val => {
       const format = (val as string).replaceAll("m", "").replaceAll("h", "").replaceAll(":", "");
       this.selectedDateFormat = format;
     });
 
-    this.daysOfMonth = UtilitiesComponent.rangeGenerator(1, 31,1);
-    this.hoursOfDay = UtilitiesComponent.rangeGenerator(0, 23,1);
-    this.minutesOfHour = UtilitiesComponent.rangeGenerator(0, 59,5);
+    this.daysOfMonth = UtilitiesComponent.rangeGenerator(1, 31, 1);
+    this.hoursOfDay = UtilitiesComponent.rangeGenerator(0, 23, 1);
+    this.minutesOfHour = UtilitiesComponent.rangeGenerator(0, 59, 5);
 
     this.reminderService.activeReminder.subscribe(update => {
       this.reminder = update;
@@ -87,21 +80,21 @@ export class EventScheduleComponent implements OnInit {
     this.reminder.daysOfWeekBitMask = UtilitiesComponent.weekToBitMask(newWeek);
     this.onChange(null);
   }
-  
-  onChange(event:any){
+
+  onChange(event: any) {
     this.reminderService.setActiveReminder(this.reminder);
   }
-  
-  onNextDateChange(event:any){
-    let nextEvent :Date = new Date(event.value)
-    nextEvent.setHours(this.hourOfDay); 
-    nextEvent.setMinutes(this.minuteOfHour); 
+
+  onNextDateChange(event: any) {
+    let nextEvent: Date = new Date(event.value)
+    nextEvent.setHours(this.hourOfDay);
+    nextEvent.setMinutes(this.minuteOfHour);
 
     this.reminder.nextEvent = nextEvent;
     this.onChange(event);
   }
 
-  onDailyClick(){
+  onDailyClick() {
     this.reminder.daysOfWeekBitMask = UtilitiesComponent.weekToBitMask(this.week);
     this.onChange(null);
   }

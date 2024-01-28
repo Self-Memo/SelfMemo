@@ -12,17 +12,17 @@ export class NavbarComponent {
   public selectedDateFormat = DateFormat.ISO;
   public DateFormat = DateFormat;
 
-  constructor(private authService: AuthService, public settingService: SettingService){}
+  constructor(private authService: AuthService, public settingService: SettingService) { }
 
-  onLogoutClick(){
+  onLogoutClick() {
     this.authService.logout();
   }
 
-  isUserLoggedIn(){
+  isUserLoggedIn() {
     return this.authService.isLoggedInUser();
   }
 
-  onSelectDateFormat(){
+  onSelectDateFormat() {
     this.settingService.selectedDateFormat.next(this.selectedDateFormat);
   }
 }

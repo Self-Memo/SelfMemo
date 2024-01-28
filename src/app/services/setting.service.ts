@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Reminder } from '../models/Reminder';
 import { DateFormat } from '../models/DateFormatEnum';
 
 @Injectable({

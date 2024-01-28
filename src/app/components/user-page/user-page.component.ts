@@ -6,13 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent {
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-    // Intentionaly blank
-  }
 
   addReminder(){
     this.router.navigate(['/add-reminder']);

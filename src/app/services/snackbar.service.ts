@@ -8,8 +8,8 @@ export class SnackbarService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  showSnackbar(sec: number, text:string) {
-      this.snackBar.open(text,"OK");
-      setTimeout( () => { this.snackBar.dismiss() }, sec * 1000 );
-    }
+  showSnackbar(sec: number, text: string) {
+    this.snackBar.open(text, "OK");
+    setTimeout(() => { this.snackBar.dismiss() }, sec * 1000);
+  }
 }

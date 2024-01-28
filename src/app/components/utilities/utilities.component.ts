@@ -8,31 +8,31 @@ import { Week } from 'src/app/models/Week';
 })
 export class UtilitiesComponent {
 
-  static rangeGenerator(min: number, max: number, steps: number): number[]{
-    let result : number[] = [];
-    for (let i = min; i <= max; i = i+steps){
+  static rangeGenerator(min: number, max: number, steps: number): number[] {
+    let result: number[] = [];
+    for (let i = min; i <= max; i = i + steps) {
       result.push(i);
     }
     return result;
   }
 
-  static booleanToNumber(boolean:Boolean):number{
-    if(boolean){
+  static booleanToNumber(boolean: Boolean): number {
+    if (boolean) {
       return 1;
     } else {
       return 0;
     }
   }
 
-  static numberToBoolean(number:number):Boolean{
-    if(number == 0){
+  static numberToBoolean(number: number): Boolean {
+    if (number == 0) {
       return false;
     } else {
       return true;
     }
   }
 
-  static weekToBitMask(week:Week):string{
+  static weekToBitMask(week: Week): string {
     let result = '';
     result += String(this.booleanToNumber(week.monday));
     result += String(this.booleanToNumber(week.tuesday));
@@ -45,8 +45,8 @@ export class UtilitiesComponent {
     return result;
   }
 
-  static bitMaskToWeek(bitMaskToWeek:string):Week{
-    let result :Week= new Week();
+  static bitMaskToWeek(bitMaskToWeek: string): Week {
+    let result: Week = new Week();
     result.monday = this.numberToBoolean(Number(bitMaskToWeek.at(0)))
     result.tuesday = this.numberToBoolean(Number(bitMaskToWeek.at(1)))
     result.wednesday = this.numberToBoolean(Number(bitMaskToWeek.at(2)))

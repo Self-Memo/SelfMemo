@@ -5,9 +5,10 @@
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
                 <input matInput value="Test" [ngModel]="reminder.nextEvent | date : selectedDateFormat">
-                <input matInput style="display: none;" [matDatepicker]="picker" [min]="todayDate" (dateChange)="onNextDateChange($event)" value="Test">
-                <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
-                <mat-datepicker #picker ></mat-datepicker>
+                <input matInput style="display: none;" [matDatepicker]="picker" [min]="todayDate"
+                    (dateChange)="onNextDateChange($event)" value="Test">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
 
@@ -19,7 +20,8 @@
             </mat-form-field>
             <p>:</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute"
+                    required>
                     <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -47,7 +49,8 @@
             </mat-form-field>
             <p>:</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute"
+                    required>
                     <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -55,10 +58,11 @@
     </div>
     <div *ngSwitchCase="EmailType.WEEKLY">
 
-         <div style="display: flex;">
-           <p>This event occurs every</p>
+        <div style="display: flex;">
+            <p>This event occurs every</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)"  (selectionChange)="onWeeklyChange($event)" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)"
+                    (selectionChange)="onWeeklyChange($event)" required>
                     <mat-option [value]="0">Monday</mat-option>
                     <mat-option [value]="1">Tuesday</mat-option>
                     <mat-option [value]="2">Wednesday</mat-option>
@@ -79,7 +83,8 @@
             </mat-form-field>
             <p>:</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute"
+                    required>
                     <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -90,7 +95,8 @@
         <div style="display: flex;">
             <p>This event occurs on the</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.dayOfMonth" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.dayOfMonth"
+                    required>
                     <mat-option *ngFor="let i of daysOfMonth" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -105,7 +111,8 @@
             </mat-form-field>
             <p>:</p>
             <mat-form-field>
-                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute" required>
+                <mat-select matNativeControl (selectionChange)="onChange($event)" [(ngModel)]="reminder.minute"
+                    required>
                     <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -152,7 +159,8 @@
             </mat-form-field>
             <p>:</p>
             <mat-form-field>
-                <mat-select matNativeControl [(ngModel)]="reminder.minute" (selectionChange)="onChange($event)" required>
+                <mat-select matNativeControl [(ngModel)]="reminder.minute" (selectionChange)="onChange($event)"
+                    required>
                     <mat-option *ngFor="let i of minutesOfHour" [value]="i">{{i}}</mat-option>
                 </mat-select>
             </mat-form-field>

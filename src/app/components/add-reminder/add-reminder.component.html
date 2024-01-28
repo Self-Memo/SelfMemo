@@ -5,12 +5,18 @@
                 <ng-template matStepLabel>Choose your reminder</ng-template>
                 <mat-form-field>
                     <mat-label>Choose your type</mat-label>
-                    <mat-select matNativeControl formControlName="firstCtrl" [(ngModel)]="reminder.type" (selectionChange)="onChange($event)" required>
-                        <mat-option [value]="EmailType.ONCE">{{ EmailType[EmailType.ONCE] | firstLetterUppercase }}</mat-option>
-                        <mat-option [value]="EmailType.DAILY">{{ EmailType[EmailType.DAILY] | firstLetterUppercase }}</mat-option>
-                        <mat-option [value]="EmailType.WEEKLY">{{ EmailType[EmailType.WEEKLY] | firstLetterUppercase }}</mat-option>
-                        <mat-option [value]="EmailType.MONTHLY">{{ EmailType[EmailType.MONTHLY] | firstLetterUppercase }}</mat-option>
-                        <mat-option [value]="EmailType.YEARLY">{{ EmailType[EmailType.YEARLY] | firstLetterUppercase }}</mat-option>
+                    <mat-select matNativeControl formControlName="firstCtrl" [(ngModel)]="reminder.type"
+                        (selectionChange)="onChange($event)" required>
+                        <mat-option [value]="EmailType.ONCE">{{ EmailType[EmailType.ONCE] | firstLetterUppercase
+                            }}</mat-option>
+                        <mat-option [value]="EmailType.DAILY">{{ EmailType[EmailType.DAILY] | firstLetterUppercase
+                            }}</mat-option>
+                        <mat-option [value]="EmailType.WEEKLY">{{ EmailType[EmailType.WEEKLY] | firstLetterUppercase
+                            }}</mat-option>
+                        <mat-option [value]="EmailType.MONTHLY">{{ EmailType[EmailType.MONTHLY] | firstLetterUppercase
+                            }}</mat-option>
+                        <mat-option [value]="EmailType.YEARLY">{{ EmailType[EmailType.YEARLY] | firstLetterUppercase
+                            }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <div>

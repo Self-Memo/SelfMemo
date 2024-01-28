@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +29,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FirstLetterUppercasePipe } from './pipes/FirstLetterUppercasePipe';
 import { UtilitiesComponent } from './components/utilities/utilities.component';
-import { ReminderOverviewComponent } from './components/reminder-overview/reminder-overview.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
@@ -50,14 +48,12 @@ import {MatMenuModule} from '@angular/material/menu';
     AdminPageComponent,
     UserPageComponent,
     NavbarComponent,
-    FooterComponent,
     OverviewComponent,
     AddReminderComponent,
     ConfigureReminderComponent,
     EventScheduleComponent,
     FirstLetterUppercasePipe,
     UtilitiesComponent,
-    ReminderOverviewComponent,
     UserOverviewComponent,
     UserCreationComponent,
     SmtpOverviewComponent
