@@ -29,6 +29,7 @@ export class UserCreationComponent {
     let file = this.userService.createUser(this.user);
     await lastValueFrom(file).then(val => {
       this.snackbarService.showSnackbar(1, "User \"" + val.user.username + "\" created!")
+      this.userService.userAdded.next(null as any);
     });
 
     this.user = {};
