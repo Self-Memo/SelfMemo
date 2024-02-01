@@ -1,4 +1,6 @@
-<div style="display: flex; flex-direction: row;padding-top: 2rem; min-height: 100cqh;">
+
+    <h3 *ngIf="reminder.type != undefined && reminder.type >= 0" style="text-align: center;" >{{ EmailType[reminder.type] | firstLetterUppercase}}</h3>
+    <div style="display: flex; flex-direction: row;padding-top: 2rem; min-height: 100cqh;">
     <mat-stepper [linear]="true" #stepper style=" width: 100cqw;">
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
