@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/User';
 import config from '../../../config.json';
 
@@ -8,6 +8,8 @@ import config from '../../../config.json';
   providedIn: 'root'
 })
 export class UserService {
+
+  userAdded = new BehaviorSubject<any>(null as any);
 
   private apiUrl = config.serverURL + '/api/users';
   headers = new HttpHeaders();

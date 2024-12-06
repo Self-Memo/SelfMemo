@@ -25,6 +25,7 @@ export class OverviewComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort | undefined;
   public dataSource: MatTableDataSource<Reminder> = new MatTableDataSource();
   public user: User = {}
+  public emailTypes = EmailType
 
   constructor(public reminderService: ReminderService, public snackbarService: SnackbarService, public settingService: SettingService) {
     this.dataSource = new MatTableDataSource();

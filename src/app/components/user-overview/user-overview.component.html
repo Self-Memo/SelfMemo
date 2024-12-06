@@ -21,7 +21,7 @@
                 <input matInput type="password" placeholder="Password" [(ngModel)]="user.password">
             </mat-form-field>
             <button mat-raised-button (click)="onUpdateUserClick(user)">Update User</button>
-            <button mat-raised-button (click)="onDeleteUserClick(user)">Delete User</button>
+            <button *ngIf="user.role != 0" mat-raised-button (click)="onDeleteUserClick(user)">Delete User</button>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
